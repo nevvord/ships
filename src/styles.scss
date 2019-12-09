@@ -1,198 +1,165 @@
-/* You can add global styles to this file, and also import other style files */
-@import './value.scss';
+$grey-base: #ddd;
+$blue-base: #2196f3;
+$light: #f9f9fb;
 
-*{
-    margin: 0;
-    padding: 0;
+$input-height-base: 3.6rem;
+
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  outline: none;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: Calibri ,Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(210deg, #48A3A4, #69BCA7 );
-    background-position-x: -210px;
-    background-position-y: -140px;
+html {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
 }
 
-@each $name, $color in $main-colors {
-    .bg-#{'' + $name} {
-        background-color: $color;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1.3rem;
+  color: #222;
 }
-@each $name, $color in $main-colors {
-    .text-#{'' + $name} {
-        color: $color;
-    }
-}
-.n-bg-g-dblue-gBlue {
-    background-image: linear-gradient(map-get($main-colors, dblue), map-get($main-colors, gblue) );
-}
-
-.img-logo {
-    width: 30px;
-    margin-left: 1rem;
-}
-
-.h-100 {
-    height: 100vh;
-}
-
-.container{
-    width: 80%;
-    margin: 100px auto;
-    box-shadow: -10px 15px 0 rgb(24, 87, 158);
-    border-radius: 1rem;
-
-}
-
-.content {
-    width: 100%;
-    overflow-y: auto;
-    overflow-x: none;
-    padding: 15px;
-    box-sizing: border-box;
-    border-radius: 0 0 1rem 1rem;
-}
-
-.content::-webkit-scrollbar {
-  width: 4px;
-}
-
-.content::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.507);
-}
-
-.content::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.637);
-  outline: 1px solid rgb(0, 0, 0);
-}
-
-.info {
-    display: inline-block;
-    padding: .5rem;
-    margin: .5rem;
-    box-sizing: border-box;
-    border: 2px solid rgb(146, 167, 238);
-    border-radius: 1rem;
-    background-color: rgb(196, 202, 238);
-    div{
-        display: inline-block;
-    }
-}
-
-.li-grid-title{
-    background: map-get($main-colors, dgray-6 );
-    padding: .5rem;
-    color: white;
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr 2fr 1fr;
-    text-align: center;
-}
-.li-grid-content{
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr 2fr 1fr;
-    text-align: center;
-    border-bottom: 1px solid map-get($main-colors, dgray-4 );
-
-    div {
-        padding: .2rem;
-    }
-
-    div:nth-child(odd) {
-        background: map-get($main-colors, dgray-2 );
-    }
-
-    
-    
-}
-
-ul{
-    li {
-        list-style: none;
-    }
-
-    li:last-child {
-        border-radius: 0 0 1rem 1rem;
-        div:nth-child(1) {
-            border-radius: 0 0 0 1rem;
-        }
-        div:last-child {
-            border-radius: 0 0 1rem 0;
-        }
-    }
-}
-
-.border-top-25{
-    border-radius: 1rem 1rem 0 0;
-}
-.border-bottom-1{
-    border-radius: 0 0 1rem 1rem;
-}
-
 
 .searcher {
+  width: 100%;
+  input {
+    display: inline-block;
     width: 100%;
-    background-color: map-get($main-colors, lblue );
-    padding: 2rem;
-    box-sizing: border-box; 
-    
-    input {
-        width: 60%;
+    border: 1px solid $grey-base;
+    border-radius: 0.2rem;
+    padding: 0 1.2rem;
+    height: $input-height-base;
+    transition: border 200ms ease-in, box-shadow 200ms ease-in;
+    &:focus {
+      border: 1px solid $blue-base;
+      box-shadow: 0 0 1px $blue-base;
+    }
+  }
+}
+
+.button-group {
+  padding: 1.5rem 0;
+}
+
+.container {
+  padding: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1004px;
+  margin: 0 auto;
+}
+
+.page {
+  &-logo {
+    font-size: 4rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #2196F3;
+    padding-bottom: 3rem;
+    padding-top: 1rem;
+  }
+  &-title {
+    text-transform: uppercase;
+    font-size: 13px;
+    color: #696969;
+    font-weight: 400;
+    padding: 0 0 1.5rem;
+  }
+}
+
+button {
+  display: inline-block;
+  height: $input-height-base;
+  padding: 0 1.2rem;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 0.2rem;
+  &[type="reset"] {
+    color: $blue-base;
+    background-color: transparent;
+    &:hover {
+      background: rgba($blue-base, 0.1);
+      color: darken($blue-base, 10%);
+    }
+  }
+  &[type="submit"] {
+    background: rgba($blue-base, 0.1);
+    color: darken($blue-base, 10%);
+    transition: color 200ms ease-in, background 200ms ease-in;
+    &[disabled] {
+      &, &:hover {
+        cursor: not-allowed;
+        background: rgba($blue-base, 0.1)!important;
+        color: darken($blue-base, 10%)!important;
+      }
+    }
+    &:hover {
+      background: $blue-base;
+      color: white;
+    }
+  }
+}
+
+.info-table {
+  table-layout: fixed;
+  width: 100%;
+  border-spacing: 0;
+  text-align: left;
+  &-wrapper {
+    margin: 0 -1rem;
+  }
+  thead {
+    tr {
+      font-weight: 500;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #696969;
+      th {
         padding: 1rem;
-        box-sizing: border-box; 
-        font-size: 1.2rem;
-        border-radius: none;
-        outline: none;
-        border: 1px solid rgb(184, 167, 167);
-        border-radius: 20px;
+      }
     }
-    
-    .button-group{
-        display: inline-block;
-        margin: 0 auto;
-        
-        button {
-            outline: none;
-            margin: .2rem;
-            padding: 1rem;
-            font-size: 1.2rem;
-            background-color: map-get($main-colors , gblue );
-            border: 1px solid gray;
-            border-top: none;
-            border-radius: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 20px;
-        }
-        
-        button:disabled {
-            background-color: map-get($main-colors , dblue );
-            cursor: not-allowed;
-        }
+  }
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: $light;
+      }
+      td {
+        padding: 1rem;
+      }
     }
-    
+  }
 }
 
-.p-1{
-    padding: .5rem;
-}
-.p-2{
-    padding: 1rem;
+.tags {
+  padding: 0 0 4.5rem 0;
+  &-item{
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 500;
+    background-color: #f0f5ff;
+    color: #673AB7;
+    height: 28px;
+    line-height: 28px;
+    margin: 0 5px;
+    border-radius: 26px;
+    padding: 0 10px;
+    img {
+      max-width: 3rem;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+    div {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 3px;
+      line-height: 1;
+    }
+  }
 }
 
-.text-center {
-    text-align: center;
-}
-
-h1{
-
-}
-
-.is-valid {
-    border-color: rgb(60, 184, 153);
-    background: rgb(66, 194, 162);
-}
-.is-invalid {
-    background: rgb(255, 195, 195);
-}
