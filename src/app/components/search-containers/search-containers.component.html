@@ -1,0 +1,59 @@
+<div>
+    <form [formGroup]="SearchContainersForm"  (ngSubmit)="GetContainers()">
+        <!-- <label for="number">Маркировочный номер контейнера:</label> -->
+        <div class="searcher" [ngClass]="{'border-bottom-1': !Containers}">
+            <input type="text" id="number" formControlName="number" placeholder="Маркировочный номер контейнера" [ngClass]="{
+                'is-valid': SearchContainersForm.valid,
+                'is-invalid': SearchContainersForm.invalid && SearchContainersForm.get('number').touched
+            }" (keydown)="validate()" (keyup)="validate()">
+            <div class="button-group">
+                <button type="submit" [disabled]="SearchContainersForm.invalid">Поиск</button>
+                <button type="reset">Очистить</button>
+            </div>
+            <div class="bg-lred p-1 text-light" *ngIf="SearchContainersForm.invalid && SearchContainersForm.get('number').touched">
+                <div *ngIf="SearchContainersForm.get('number').getError('required')">
+                        Необходимо ввести номер контейнера
+                </div>
+                <div *ngIf="SearchContainersForm.get('number').getError('maxlength')">
+                    Максимально 11 символов
+                </div>
+                <div *ngIf="SearchContainersForm.get('number').getError('pattern')">
+                    4 Символа и 7 цифр
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="content bg-light" *ngIf="Containers">
+        <div>
+            <div class="info">
+                <div class="p-1 text-blue">id:</div>
+                <div class="text-dblue">{{Containers.id}}</div>
+            </div>
+            <div class="info">
+                <div class="p-1 text-blue">Owner:</div>
+                <div class="text-dblue">{{Containers.owner}}</div>
+                <app-logo [owner]="Containers.owner"></app-logo>
+            </div>
+        </div>
+        <div class="p-1 bg-dblue text-center text-light border-top-25">History</div>
+        <ul>
+            <li class="li-grid-title">
+                <div>Date From</div>
+                <div>Date To</div>
+                <div>Source Port</div>
+                <div>Destination Port</div>
+                <div>Sender</div>
+            </li>
+            <li class="li-grid-content" *ngFor="let history of Containers.history">
+                <div>{{history.dateFrom}}</div>
+                <div>{{history.dateTo}}</div>
+                <div>{{history.sourcePort}}</div>
+                <div>{{history.destinationPort}}</div>
+                <div>{{history.sender}}</div>
+            </li>
+            <!-- <li>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis itaque maiores, officia laudantium repudiandae asperiores eos quod voluptate vero ex excepturi deleniti eaque consequatur vitae distinctio iusto iure incidunt recusandae, ipsam placeat laboriosam vel suscipit nulla! Possimus sapiente, nobis veniam libero natus distinctio impedit itaque amet praesentium minima accusantium quidem culpa. Optio sint inventore exercitationem minima fugit est quae maiores debitis rerum deserunt, numquam dolore omnis illo nobis autem nostrum quod illum molestias reiciendis! Mollitia iure ipsum facere, atque inventore aut, aliquid quisquam id nobis dolores dolore sit cumque blanditiis dolor officia. Facilis voluptatibus omnis quasi architecto totam assumenda, laudantium eius pariatur saepe excepturi tempora et ea ut fuga quod nesciunt cupiditate quibusdam explicabo consequuntur quas dicta minus atque! Molestias ducimus tempora, sunt fuga ab, rem aliquid quis inventore asperiores quasi voluptatem consequuntur? Error possimus beatae quibusdam sit atque, qui sed doloribus quam maxime inventore odit nemo, tenetur esse quas iste amet reprehenderit unde? Similique quos consectetur quaerat est ratione alias ipsam magni! Laudantium saepe natus vel voluptatem quibusdam illum consequuntur quae, temporibus deserunt quas inventore autem ducimus, odio rem aliquid ut deleniti fugit? Corporis maiores, quisquam exercitationem reprehenderit amet deleniti quidem. Facere nostrum reiciendis, harum, hic quis voluptatum doloremque, dicta facilis quaerat eligendi obcaecati. Officiis fugiat incidunt quis ipsam natus amet maxime suscipit hic blanditiis exercitationem. Minus et praesentium deserunt eius voluptas numquam officiis animi tempora quidem omnis, facilis amet in ut cupiditate cum ex assumenda fugit quis possimus ipsa alias natus optio magni sint? Possimus porro voluptate quaerat ab! Harum impedit quae, beatae eligendi ut nostrum, architecto totam repellat, explicabo distinctio nisi fuga accusantium et sed id neque est possimus officiis molestiae dicta. Fuga, tempora amet delectus iste optio rerum, nihil distinctio maxime, earum vero repellat! Laudantium, temporibus consectetur? Eveniet eaque repudiandae earum aspernatur corporis omnis qui dolor blanditiis commodi, dolorem amet ad similique sit recusandae exercitationem eum obcaecati? Natus soluta eius et aliquid velit magnam, voluptas quo cupiditate reiciendis corrupti. Repellendus quidem quibusdam nulla provident magni ratione illum totam hic placeat porro, doloremque ipsam nobis libero veniam esse natus omnis iure dolorum! Quasi, autem quod. Accusamus maxime tempora nulla, nisi suscipit facilis ipsum iure aperiam ab quaerat nesciunt labore voluptatem sunt dolore, alias, expedita repellat! Necessitatibus labore in sint optio repudiandae expedita quis nisi commodi ad quas eum eveniet error laboriosam ex consequuntur vitae harum sequi, earum et nam consectetur magnam asperiores perspiciatis. Fuga itaque atque tempora inventore! Repellendus ad vitae neque exercitationem aliquid temporibus fuga magni adipisci voluptates, consequatur nemo ex repudiandae voluptate eligendi, quia nulla dolor illo sit vel consectetur perferendis id! Molestias, modi. Nostrum corporis, totam at aspernatur earum dolore deleniti consequatur esse, facilis sequi vel a doloribus rerum itaque. Dolore possimus quam quas sunt aspernatur rem consectetur repudiandae nesciunt veritatis aliquam, ipsum sequi ab. Harum sunt sit maiores doloribus, dolores tenetur illum optio amet impedit porro consectetur molestiae ex, provident soluta aut cupiditate non numquam reiciendis natus. Adipisci, corporis accusamus? Ex nihil error impedit cumque dolores voluptatum illo quisquam magnam, officia fugit aliquid.
+            </li> -->
+        </ul>
+    </div>
+</div>

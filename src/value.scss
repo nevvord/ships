@@ -1,0 +1,49 @@
+$padding: (
+    // Size padding
+    1: 1rem,
+    2: 2rem,
+    3: 3rem
+);
+
+$transition: (
+    3: 0.3s,
+    5: 0.5s,
+    1: 1s
+);
+
+$modal-border: 1px solid rgb(116, 110, 110);
+
+$main-colors: (
+    green: rgb(0, 180, 15),
+    green-1: rgba(0, 180, 15, 0.1),
+    green-2: rgba(0, 180, 15, 0.2),
+    ggreen:  rgb(22, 189, 97),
+    dgreen:  rgb(0, 87, 26),
+    salat: rgb(85, 223, 73),
+    orange: rgb(255, 166, 0),
+    gorange:  rgb(172, 133, 49),
+    dorange:  rgb(107, 64, 0),
+    red: rgb(255, 0, 0),
+    red-1: rgba(255, 0, 0, 0.1),
+    red-2: rgba(255, 0, 0, 0.2),
+    lred: rgb(255, 121, 121),
+    gred:  rgb(172, 49, 49),
+    dred:  rgb(107, 0, 0),
+    blue: rgb(64, 64, 143),
+    lblue: rgb(61, 130, 165),
+    gblue: rgb(58, 76, 95),
+    dblue: rgb(29, 33, 44),
+    light: rgb(247, 248, 237),
+    gray: rgb(184, 184, 184),
+    dgray: rgb(54, 53, 53),
+    dgray-6: rgba(54, 53, 53, 0.6),
+    dgray-4: rgba(54, 53, 53, 0.4),
+    dgray-2: rgba(54, 53, 53, 0.2),
+    dgray-1: rgba(54, 53, 53, 0.1),
+    dark: rgb(44, 44, 44),
+    black: rgb(0, 0, 0),
+    black-5: rgba(0, 0, 0, 0.5),
+    black-25: rgba(0, 0, 0, 0.25),
+    black-1: rgba(0, 0, 0, 0.1),
+    white: rgb(255, 255, 255)
+);
